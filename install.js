@@ -7,9 +7,20 @@ const download = require("download")
 const fs = require('fs')
 const path = require('path')
 
-const host = 'http://npmmirror.eyou.net'
+const host = 'https://raw.githubusercontent.com/letsgo-x/clipboard-js/main/prebuilds'
+// const host = 'https://gitee.com/letsgo-x/clipboard-js/raw/main/prebuilds'
 const platform = getPlatform()
 const arch = process.env.npm_config_arch || process.arch
+
+let ext = '.dll'
+
+if (platform === 'darwin') {
+  ext = '.dylib'
+}
+if (platform === 'linux') {
+  ext = '.so'
+}
+const name3 = `lib${name2}${ext}`
 
 function removeSuffix(str, suffix) {
   if (str.endsWith(suffix)) {
@@ -28,15 +39,6 @@ function getPlatform() {
 }
 
 function isInstalled() {
-  let ext = '.dll'
-
-  if (platform === 'darwin') {
-    ext = '.dylib'
-  }
-  if (platform === 'linux') {
-    ext = '.so'
-  }
-
   try {
     return fs.existsSync(path.join(__dirname, 'bin', 'libclipboard' + ext));
   } catch (e) {
@@ -49,19 +51,22 @@ if (isInstalled()) {
   // process.exit(0);
 }
 
-console.log(name, version, name2, arch)
-return
-
 // 定义下载链接
 // /clipboard/v1.0.0/clipboard-v1.0.0-win-x86.tar.gz
-const url = host + '/' + name + '/v' + version + '/' + name + '-v' + version + '-' + platform + '-' + arch + '.tar.gz';
+// const url = host + '/' + name + '/v' + version + '/' + name + '-v' + version + '-' + platform + '-' + arch + '.tar.gz';
+// https://raw.githubusercontent.com/letsgo-x/clipboard-js/main/prebuilds/darwin-x64/libclipboard.dylib
+// https://gitee.com/letsgo-x/clipboard-js/raw/main/prebuilds/darwin-x64/libclipboard.dylib
+const url = host + '/' + platform + '-' + arch + '/' + name3;
+
+// console.log(name, version, name2, name3, url)
+// return
 
 (async () => {
   let binary_dir = path.join(__dirname, 'bin')
-  await download(url, binary_dir, { extract: true })
+  await download(url, binary_dir)
 
   // 暂时不支持 win32
-  if (platform === 'win32') {
+  if (platform === 'win') {
     console.log('currently not supporting win32!')
     process.exit(0)
   }
