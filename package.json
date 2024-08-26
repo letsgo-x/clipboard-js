@@ -1,0 +1,39 @@
+{
+  "name": "clipboard-js",
+  "version": "1.0.0",
+  "description": "A Cross platform clipboard library, supporting Windows, MacOS, and Linux",
+  "main": "index.js",
+  "files": [
+    "bin",
+    "index.js",
+    "install.js"
+  ],
+  "scripts": {
+    "postinstall": "node install.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/letsgo-x/clipboard-js.git"
+  },
+  "keywords": [
+    "ffi",
+    "napi",
+    "nodejs",
+    "windows",
+    "macos",
+    "linux",
+    "clipboard",
+    "library"
+  ],
+  "author": "fanybook",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/letsgo-x/clipboard-js/issues"
+  },
+  "homepage": "https://github.com/letsgo-x/clipboard-js#readme",
+  "dependencies": {
+    "download": "^8.0.0",
+    "ffi-napi": "^4.0.3",
+    "ref-napi": "^3.0.3"
+  }
+}
