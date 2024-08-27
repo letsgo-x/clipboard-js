@@ -18,7 +18,7 @@ const clipboard = require('./index.js')
 
 clipboard.writeMany({
   text: '你好1',
-  html: '<p>世界1</p>',
+  html: '<p style="color: red;">世界1</p>',
   rawd: Buffer.from('hello rawd666!'),
 })
 
@@ -27,7 +27,7 @@ console.log('CT_HTML:', clipboard.readHTML())
 console.log('CT_RAWD:', clipboard.readRAWD().toString())
 
 
-// 复制图片到剪切板中
+// // 复制图片到剪切板中
 // const fs = require('node:fs')
 // const path = require('node:path')
 // const imagePath = path.join(__dirname, 'example_output.png')
@@ -53,7 +53,7 @@ const sleep = (ms) => {
 }
 
 // linux 需要保证进程活着，这是 x11 决定的
-// linux 只有进程一直存活，剪贴板才能正常使用，并且才能正常监控剪切板变化计数序列号
+// linux 只有进程一直存活，才能监控剪切板变化并计数序列号
 const start = async () => {
   for (let idx = 0;; idx++) {
     await sleep(1000)
