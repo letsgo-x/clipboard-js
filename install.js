@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { name, version } = require('./package')
-const name2 = removeSuffix(name, '-js')
+const name2 = removeSuffix(name, '-js-ffi')
 
 const download = require("download")
 const fs = require('fs')

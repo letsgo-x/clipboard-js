@@ -1,12 +1,15 @@
 {
-  "name": "clipboard-js",
+  "name": "clipboard-js-ffi",
   "version": "1.0.0",
   "description": "A Cross platform clipboard library, supporting Windows, MacOS, and Linux",
   "main": "index.js",
   "files": [
-    "bin",
+    "example_output.png",
     "index.js",
-    "install.js"
+    "install.js",
+    "LICENSE",
+    "README.md",
+    "test.js"
   ],
   "scripts": {
     "postinstall": "node install.js"
