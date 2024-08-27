@@ -7,12 +7,17 @@ const CString = ref.types.CString
 const charPtr = ref.refType(ref.types.char)
 const intPtr = ref.refType(ref.types.int)
 
-let platform = process.env.npm_config_platform || process.platform
-console.log(platform, process.env.npm_config_platform, process.platform)
-return
+const platform = process.env.npm_config_platform || process.platform
+
+let ext = '.dll'
+if (platform === 'darwin') {
+  ext = '.dylib'
+} else if (platform === 'linux') {
+  ext = '.so'
+}
 
 // TODO: 修改动态库的扩展名
-const clipboardLib = ffi.Library('./libclipboard.dylib', {
+const clipboardLib = ffi.Library('./bin/libclipboard' + ext, {
   'FreeCharMem': ['void', [charPtr]],
   'ClipboardSequenceNumber': ['int', []],
 
