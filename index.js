@@ -1,5 +1,6 @@
-const ffi = require('ffi-napi')
-const ref = require('ref-napi')
+const ffi = require('@lwahonen/ffi-napi')
+const ref = require('@lwahonen/ref-napi')
+const path = require('node:path')
 
 // 简化定义 C 的类型
 const CInt = ref.types.int
@@ -17,7 +18,7 @@ if (platform === 'darwin') {
 }
 
 // TODO: 修改动态库的扩展名
-const clipboardLib = ffi.Library('./bin/libclipboard' + ext, {
+const clipboardLib = ffi.Library(path.join(__dirname, 'bin/libclipboard' + ext), {
   'FreeCharMem': ['void', [charPtr]],
   'ClipboardSequenceNumber': ['int', []],
 

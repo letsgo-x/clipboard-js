@@ -1,6 +1,6 @@
 {
   "name": "clipboard-js-ffi",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "A Cross platform clipboard library, supporting Windows, MacOS, and Linux",
   "main": "index.js",
   "files": [
@@ -36,7 +36,6 @@
   "homepage": "https://github.com/letsgo-x/clipboard-js#readme",
   "dependencies": {
     "download": "^8.0.0",
-    "ffi-napi": "^4.0.3",
-    "ref-napi": "^3.0.3"
+    "@lwahonen/ffi-napi": "^4.0.12"
   }
 }
